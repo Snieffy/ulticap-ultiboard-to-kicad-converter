@@ -127,8 +127,10 @@ def _settings() -> List[Setting]:
     s.append(Setting('board', 'font', 'text', KICAD_FONT, (
         'Font of every text on the board: "KiCad Font", KiCad\'s own font, or the family name of any '
         'installed font; "Ultiboard Stroke" looks as Ultiboard does. The text sizes follow '
-        'font_height_ratio and font_width_ratio. A font must be installed on every computer that '
-        'opens the KiCad files.'), 'Font'))
+        'font_height_ratio and font_width_ratio. The board\'s text settings are tuned for Ultiboard '
+        'Stroke: another font can draw texts larger, and on copper they can then touch traces or pads '
+        '(run the design rule check). A font must be installed on every computer that opens the '
+        'KiCad files.'), 'Font'))
     s.append(Setting('board', 'library_only', 'choice', 'ask', (
         'A DDF that places components but holds no nets, copper or vias may be a design or a shape '
         'library. ask: the question is asked (yes, the command line\'s --yes: a design); yes: '
