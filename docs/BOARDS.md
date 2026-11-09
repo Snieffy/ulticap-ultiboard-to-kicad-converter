@@ -101,6 +101,12 @@ chosen font, suggested between 1.0 and 1.5. They are remembered **per font**: ch
 in the ratios last used with it. KiCad Font, DejaVu Sans Mono and Ultiboard Stroke start with
 known-good values.
 
+> [!IMPORTANT]
+> The board's text settings are tuned for the Ultiboard font, **Ultiboard Stroke**. Another font can
+> draw a text larger than Ultiboard did; on a copper layer it can then touch neighbouring traces or
+> pads — shorts in KiCad's design rule check. With another font, run the design rule check after
+> converting and lower the text ratios where texts on copper come too close.
+
 **Ultiboard Stroke**, `fonts/UltiboardStroke-Regular.ttf`, was made to match Ultiboard's own PCB
 font. Like any font but KiCad's own, it must be installed on every computer that opens the KiCad
 files; how to install one: the README's [Fonts](../README.md#fonts). Ultiboard's own text encoding
