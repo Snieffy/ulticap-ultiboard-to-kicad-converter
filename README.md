@@ -157,6 +157,14 @@ its own font instead:
 | DejaVu Sans Mono | a monospaced choice for either; also draws the characters KiCad's font lacks | not included: install it separately |
 | ISOCTEUR | the viewer's text | not included: an AutoCAD (Autodesk) font, free for personal use; check its licence before commercial use |
 
+> [!IMPORTANT]
+> **Boards: use Ultiboard Stroke.** The Ulticap and Ultiboard fonts give the results closest to the
+> originals, and the board's text settings in particular (among them the V2/V3 text size and stroke
+> estimates) are tuned for the Ultiboard font. Another font can draw the same text larger, and on a
+> copper layer a text that grows can touch neighbouring traces or pads: shorts that KiCad's design
+> rule check reports. With another font, run the design rule check after converting and lower the
+> text ratios where texts on copper come too close.
+
 To install a font:
 - **Windows:** right-click the `.ttf` file → **Install** (or **Install for all users**).
 - **macOS:** double-click the file → **Install Font** in Font Book.
@@ -357,7 +365,8 @@ codes: 0 done, 1 refused, cancelled or failed, 2 a wrong command line.
                          sym-lib-table, fp-lib-table, <name>_kiut.ini, the logs
     <name>_lib_KiCad/    a design's DDF converted as a library only: its library board, <name>.pretty
 
-Documents/KIUT/          KIUT's library folder: every library-only conversion, side by side
+<your user folder>/Documents/KIUT/
+                         KIUT's library folder: every library-only conversion, side by side
     Symbols/             Ulticap symbol libraries: a .kicad_sym and a log each, one sym-lib-table,
                          Ulticap_lib_kiut.ini
     Blocks/              block libraries (a .BLK, or a .SCH with Block library): <name>.kicad_blocks,
@@ -370,10 +379,12 @@ KiCad treats a `.kicad_pro`, `.kicad_sch` and `.kicad_pcb` as one project only w
 name in one folder, so a design's folder and names can't be chosen; to convert a design somewhere
 else, copy its files there. A design stays together with what it makes, its own libraries included.
 A library-only conversion goes into KIUT's library folder instead, so the converted libraries lie
-side by side, ready to be copied to KiCad or added to its library tables; the folder is created when
-needed, and can be chosen in the window (*File → Library output folder…*, kept in `kiut.ini` for
-`kiut.py` too) or for one run with the environment variable `KIUT_LIBRARY_FOLDER`. A folder that
-can't be written to (a CD, a read-only share) is refused.
+side by side, ready to be copied to KiCad or added to its library tables. It lies in your user
+folder — `C:\Users\<you>\Documents\KIUT` on Windows (`%USERPROFILE%\Documents\KIUT`),
+`~/Documents/KIUT` on Linux and macOS — and is created by the first library-only conversion, each
+subfolder when it is first needed. Another folder can be chosen in the window (*File → Library
+output folder…*, kept in `kiut.ini` for `kiut.py` too) or for one run with the environment variable
+`KIUT_LIBRARY_FOLDER`. A folder that can't be written to (a CD, a read-only share) is refused.
 
 Every correction KIUT makes to a design's source files goes into `<name>_corrected`, and every later
 conversion reads those copies. The folder is a complete design that Ulticap and Ultiboard open as
