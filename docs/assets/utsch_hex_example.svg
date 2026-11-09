@@ -1,0 +1,271 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="1196" viewBox="0 0 1320 1196" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12">
+<rect width="1320" height="1196" fill="#ffffff"/>
+<text x="20" y="26" fill="#222" font-size="16" font-weight="600">Worked example — the first 0x171 bytes of the Contents stream of blank.UTSCH (3,752 bytes)</text>
+<text x="20" y="46" fill="#555">One field per line. Offsets are stream offsets (here file offset = 0x0C00 + stream offset, §1). Indentation follows the nesting of objects; classes and objects share one counter (§3.2).</text>
+<text x="20" y="82" fill="#888" font-size="11">offset</text>
+<text x="84" y="82" fill="#888" font-size="11">bytes</text>
+<text x="560" y="82" fill="#888" font-size="11">class · object</text>
+<text x="700" y="82" fill="#888" font-size="11">field</text>
+<line x1="20" y1="88" x2="1300" y2="88" stroke="#ccc"/>
+<rect x="79" y="95" width="86" height="15" rx="2" fill="#c9d7ec"/>
+<text x="20" y="107" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">0000</text>
+<text x="84" y="107" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">30 02 00 00</text>
+<text x="700" y="107" fill="#222" font-size="12">stream header: document schema 0x230 (§2)</text>
+<rect x="79" y="113" width="45" height="15" rx="2" fill="#f3e1c4"/>
+<text x="20" y="125" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">0004</text>
+<text x="84" y="125" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">01 35</text>
+<text x="700" y="125" fill="#222" font-size="12">STRING "5"</text>
+<rect x="79" y="131" width="65" height="15" rx="2" fill="#f3e1c4"/>
+<text x="20" y="143" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">0006</text>
+<text x="84" y="143" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">02 33 33</text>
+<text x="700" y="143" fill="#222" font-size="12">STRING "33"</text>
+<rect x="79" y="149" width="45" height="15" rx="2" fill="#b9dfb0"/>
+<text x="20" y="161" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">0009</text>
+<text x="84" y="161" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">01 00</text>
+<text x="700" y="161" fill="#222" font-size="12">document variants: COUNT 1 (§7.1)</text>
+<rect x="79" y="167" width="334" height="15" rx="2" fill="#e6e6e6"/>
+<text x="20" y="179" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">000B</text>
+<text x="84" y="179" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">FF FF 12 02 0B 00 43 44 6F 63 56 61 72 69 61 6E</text>
+<text x="422" y="179" fill="#999" font-family="Consolas, Menlo, monospace" font-size="11.5">......CDocVarian</text>
+<text x="560" y="179" fill="#2e5fa8" font-size="11.5">class 1 · object 2</text>
+<text x="716" y="179" fill="#222" font-size="12">PTR: new class (FFFF, schema 0x212, name length 11) CDocVariant, then its object</text>
+<rect x="79" y="185" width="24" height="15" rx="2" fill="#e6e6e6"/>
+<text x="20" y="197" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">001B</text>
+<text x="84" y="197" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">74</text>
+<text x="112" y="197" fill="#999" font-family="Consolas, Menlo, monospace" font-size="11.5">t</text>
+<rect x="79" y="203" width="169" height="15" rx="2" fill="#f3e1c4"/>
+<text x="20" y="215" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">001C</text>
+<text x="84" y="215" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">07 44 45 46 41 55 4C 54</text>
+<text x="257" y="215" fill="#999" font-family="Consolas, Menlo, monospace" font-size="11.5">.DEFAULT</text>
+<text x="732" y="215" fill="#222" font-size="12">name: STRING "DEFAULT"</text>
+<rect x="79" y="221" width="86" height="15" rx="2" fill="#c9d7ec"/>
+<text x="20" y="233" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">0024</text>
+<text x="84" y="233" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">01 00 00 00</text>
+<text x="732" y="233" fill="#222" font-size="12">visible: 1</text>
+<rect x="79" y="239" width="86" height="15" rx="2" fill="#c9d7ec"/>
+<text x="20" y="251" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">0028</text>
+<text x="84" y="251" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">00 00 00 00</text>
+<text x="732" y="251" fill="#222" font-size="12">index: 0</text>
+<rect x="79" y="257" width="45" height="15" rx="2" fill="#b9dfb0"/>
+<text x="20" y="269" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">002C</text>
+<text x="84" y="269" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">01 00</text>
+<text x="700" y="269" fill="#222" font-size="12">font list: COUNT 1 (§7.2)</text>
+<rect x="79" y="275" width="334" height="15" rx="2" fill="#e6e6e6"/>
+<text x="20" y="287" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">002E</text>
+<text x="84" y="287" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">FF FF 12 02 0F 00 43 41 74 74 72 69 62 46 6F 6E</text>
+<text x="422" y="287" fill="#999" font-family="Consolas, Menlo, monospace" font-size="11.5">......CAttribFon</text>
+<text x="560" y="287" fill="#2e5fa8" font-size="11.5">class 3 · object 4</text>
+<text x="716" y="287" fill="#222" font-size="12">PTR: new class CAttribFontInfo (schema 0x212), then its object</text>
+<rect x="79" y="293" width="107" height="15" rx="2" fill="#e6e6e6"/>
+<text x="20" y="305" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">003E</text>
+<text x="84" y="305" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">74 49 6E 66 6F</text>
+<text x="195" y="305" fill="#999" font-family="Consolas, Menlo, monospace" font-size="11.5">tInfo</text>
+<rect x="79" y="311" width="334" height="15" rx="2" fill="#e6e6e6"/>
+<text x="20" y="323" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">0043</text>
+<text x="84" y="323" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">FF FF 64 00 0B 00 43 53 65 72 69 61 6C 46 6F 6E</text>
+<text x="422" y="323" fill="#999" font-family="Consolas, Menlo, monospace" font-size="11.5">..d...CSerialFon</text>
+<text x="560" y="323" fill="#2e5fa8" font-size="11.5">class 5 · object 6</text>
+<text x="732" y="323" fill="#222" font-size="12">font: PTR, new class CSerialFont (schema 0x064), then its object</text>
+<rect x="79" y="329" width="24" height="15" rx="2" fill="#e6e6e6"/>
+<text x="20" y="341" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">0053</text>
+<text x="84" y="341" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">74</text>
+<text x="112" y="341" fill="#999" font-family="Consolas, Menlo, monospace" font-size="11.5">t</text>
+<rect x="79" y="347" width="86" height="15" rx="2" fill="#c9d7ec"/>
+<text x="20" y="359" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">0054</text>
+<text x="84" y="359" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">38 00 00 00</text>
+<text x="748" y="359" fill="#222" font-size="12">height: 56</text>
+<rect x="79" y="365" width="86" height="15" rx="2" fill="#c9d7ec"/>
+<text x="20" y="377" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">0058</text>
+<text x="84" y="377" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">00 00 00 00</text>
+<text x="748" y="377" fill="#222" font-size="12">width: 0</text>
+<rect x="79" y="383" width="86" height="15" rx="2" fill="#c9d7ec"/>
+<text x="20" y="395" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">005C</text>
+<text x="84" y="395" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">00 00 00 00</text>
+<text x="748" y="395" fill="#222" font-size="12">escapement: 0</text>
+<rect x="79" y="401" width="86" height="15" rx="2" fill="#c9d7ec"/>
+<text x="20" y="413" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">0060</text>
+<text x="84" y="413" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">00 00 00 00</text>
+<text x="748" y="413" fill="#222" font-size="12">orientation: 0</text>
+<rect x="79" y="419" width="86" height="15" rx="2" fill="#c9d7ec"/>
+<text x="20" y="431" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">0064</text>
+<text x="84" y="431" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">90 01 00 00</text>
+<text x="748" y="431" fill="#222" font-size="12">weight: 400 (regular)</text>
+<rect x="79" y="437" width="169" height="15" rx="2" fill="#c9d7ec"/>
+<text x="20" y="449" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">0068</text>
+<text x="84" y="449" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">00 00 00 00 00 10 02 30</text>
+<text x="748" y="449" fill="#222" font-size="12">italic, underline, strike-out, character set, precisions, quality, pitch and family</text>
+<rect x="79" y="455" width="127" height="15" rx="2" fill="#f3e1c4"/>
+<text x="20" y="467" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">0070</text>
+<text x="84" y="467" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">41 72 69 61 6C 00</text>
+<text x="215" y="467" fill="#999" font-family="Consolas, Menlo, monospace" font-size="11.5">Arial.</text>
+<text x="748" y="467" fill="#222" font-size="12">face name: "Arial" and its NUL …</text>
+<rect x="79" y="473" width="334" height="15" rx="2" fill="#ffffff" stroke="#bbb" stroke-dasharray="3 2"/>
+<text x="20" y="485" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">0076</text>
+<text x="84" y="485" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">E0 00 75 48 DD 73 30 30 E1 00 F8 F2 12 00 30 30</text>
+<text x="748" y="485" fill="#222" font-size="12">… then leftover memory up to 32 bytes; a reader ignores it</text>
+<rect x="79" y="491" width="210" height="15" rx="2" fill="#ffffff" stroke="#bbb" stroke-dasharray="3 2"/>
+<text x="20" y="503" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">0086</text>
+<text x="84" y="503" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">E1 00 CC F3 12 00 B0 F3 12 00</text>
+<rect x="79" y="509" width="86" height="15" rx="2" fill="#c9d7ec"/>
+<text x="20" y="521" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">0090</text>
+<text x="84" y="521" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">23 00 00 00</text>
+<text x="732" y="521" fill="#222" font-size="12">usage: 35</text>
+<rect x="79" y="527" width="86" height="15" rx="2" fill="#c9d7ec"/>
+<text x="20" y="539" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">0094</text>
+<text x="84" y="539" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">00 00 00 00</text>
+<text x="732" y="539" fill="#222" font-size="12">index: 0</text>
+<rect x="79" y="545" width="45" height="15" rx="2" fill="#b9dfb0"/>
+<text x="20" y="557" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">0098</text>
+<text x="84" y="557" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">00 00</text>
+<text x="700" y="557" fill="#222" font-size="12">nets: COUNT 0 — a blank design has no nets (§10)</text>
+<rect x="79" y="563" width="45" height="15" rx="2" fill="#b9dfb0"/>
+<text x="20" y="575" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">009A</text>
+<text x="84" y="575" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">01 00</text>
+<text x="700" y="575" fill="#222" font-size="12">library map: COUNT 1 (§5)</text>
+<rect x="79" y="581" width="293" height="15" rx="2" fill="#f3e1c4"/>
+<text x="20" y="593" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">009C</text>
+<text x="84" y="593" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">0D 55 54 5F 53 48 45 45 54 53 48 41 50 45</text>
+<text x="381" y="593" fill="#999" font-family="Consolas, Menlo, monospace" font-size="11.5">.UT_SHEETSHAPE</text>
+<text x="716" y="593" fill="#222" font-size="12">key: STRING "UT_SHEETSHAPE"</text>
+<rect x="79" y="599" width="252" height="15" rx="2" fill="#e6e6e6"/>
+<text x="20" y="611" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">00AA</text>
+<text x="84" y="611" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">FF FF 12 02 06 00 43 53 68 61 70 65</text>
+<text x="340" y="611" fill="#999" font-family="Consolas, Menlo, monospace" font-size="11.5">......CShape</text>
+<text x="560" y="611" fill="#2e5fa8" font-size="11.5">class 7 · object 8</text>
+<text x="716" y="611" fill="#222" font-size="12">value: PTR, new class CShape (schema 0x212), then its object (§5.1)</text>
+<rect x="79" y="617" width="45" height="15" rx="2" fill="#b9dfb0"/>
+<text x="20" y="629" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">00B6</text>
+<text x="84" y="629" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">01 00</text>
+<text x="732" y="629" fill="#222" font-size="12">gate drawings: ARRAY, COUNT 1</text>
+<rect x="79" y="635" width="314" height="15" rx="2" fill="#e6e6e6"/>
+<text x="20" y="647" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">00B8</text>
+<text x="84" y="647" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">FF FF 12 02 09 00 43 53 75 62 53 68 61 70 65</text>
+<text x="402" y="647" fill="#999" font-family="Consolas, Menlo, monospace" font-size="11.5">......CSubShape</text>
+<text x="560" y="647" fill="#2e5fa8" font-size="11.5">class 9 · object 10</text>
+<text x="748" y="647" fill="#222" font-size="12">PTR: new class CSubShape, then its object (§5.2)</text>
+<rect x="79" y="653" width="45" height="15" rx="2" fill="#b9dfb0"/>
+<text x="20" y="665" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">00C7</text>
+<text x="84" y="665" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">01 00</text>
+<text x="764" y="665" fill="#222" font-size="12">graphics: ARRAY, COUNT 1</text>
+<rect x="79" y="671" width="272" height="15" rx="2" fill="#e6e6e6"/>
+<text x="20" y="683" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">00C9</text>
+<text x="84" y="683" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">FF FF 12 02 07 00 43 55 63 52 65 63 74</text>
+<text x="360" y="683" fill="#999" font-family="Consolas, Menlo, monospace" font-size="11.5">......CUcRect</text>
+<text x="560" y="683" fill="#2e5fa8" font-size="11.5">class 11 · object 12</text>
+<text x="780" y="683" fill="#222" font-size="12">PTR: new class CUcRect, then its object (§4.5)</text>
+<rect x="79" y="689" width="334" height="15" rx="2" fill="#e6e6e6"/>
+<text x="20" y="701" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">00D6</text>
+<text x="84" y="701" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">FF FF 64 00 0A 00 43 52 65 63 74 61 6E 67 6C 65</text>
+<text x="422" y="701" fill="#999" font-family="Consolas, Menlo, monospace" font-size="11.5">..d...CRectangle</text>
+<text x="560" y="701" fill="#2e5fa8" font-size="11.5">class 13</text>
+<text x="796" y="701" fill="#222" font-size="12">M(CRectangle): first marker of this class — FFFF, schema 0x064, name</text>
+<rect x="79" y="707" width="86" height="15" rx="2" fill="#c9d7ec"/>
+<text x="20" y="719" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">00E6</text>
+<text x="84" y="719" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">00 00 00 00</text>
+<text x="796" y="719" fill="#222" font-size="12">filled: 0</text>
+<rect x="79" y="725" width="86" height="15" rx="2" fill="#c9d7ec"/>
+<text x="20" y="737" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">00EA</text>
+<text x="84" y="737" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">00 00 FF 00</text>
+<text x="796" y="737" fill="#222" font-size="12">fill colour: 0x00FF0000</text>
+<rect x="79" y="743" width="334" height="15" rx="2" fill="#e6e6e6"/>
+<text x="20" y="755" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">00EE</text>
+<text x="84" y="755" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">FF FF 64 00 0F 00 43 54 77 6F 50 6F 69 6E 74 4F</text>
+<text x="422" y="755" fill="#999" font-family="Consolas, Menlo, monospace" font-size="11.5">..d...CTwoPointO</text>
+<text x="560" y="755" fill="#2e5fa8" font-size="11.5">class 14</text>
+<text x="796" y="755" fill="#222" font-size="12">M(CTwoPointObject)</text>
+<rect x="79" y="761" width="107" height="15" rx="2" fill="#e6e6e6"/>
+<text x="20" y="773" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">00FE</text>
+<text x="84" y="773" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">62 6A 65 63 74</text>
+<text x="195" y="773" fill="#999" font-family="Consolas, Menlo, monospace" font-size="11.5">bject</text>
+<rect x="79" y="779" width="334" height="15" rx="2" fill="#e6e6e6"/>
+<text x="20" y="791" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">0103</text>
+<text x="84" y="791" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">FF FF 64 00 0B 00 43 44 72 61 77 4F 62 6A 65 63</text>
+<text x="422" y="791" fill="#999" font-family="Consolas, Menlo, monospace" font-size="11.5">..d...CDrawObjec</text>
+<text x="560" y="791" fill="#2e5fa8" font-size="11.5">class 15</text>
+<text x="796" y="791" fill="#222" font-size="12">M(CDrawObject)</text>
+<rect x="79" y="797" width="24" height="15" rx="2" fill="#e6e6e6"/>
+<text x="20" y="809" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">0113</text>
+<text x="84" y="809" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">74</text>
+<text x="112" y="809" fill="#999" font-family="Consolas, Menlo, monospace" font-size="11.5">t</text>
+<rect x="79" y="815" width="86" height="15" rx="2" fill="#c9d7ec"/>
+<text x="20" y="827" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">0114</text>
+<text x="84" y="827" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">00 00 FF 00</text>
+<text x="796" y="827" fill="#222" font-size="12">pen colour: 0x00FF0000 (drawing record, §4.4)</text>
+<rect x="79" y="833" width="86" height="15" rx="2" fill="#c9d7ec"/>
+<text x="20" y="845" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">0118</text>
+<text x="84" y="845" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">02 00 00 00</text>
+<text x="796" y="845" fill="#222" font-size="12">pen width: 2</text>
+<rect x="79" y="851" width="86" height="15" rx="2" fill="#c9d7ec"/>
+<text x="20" y="863" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">011C</text>
+<text x="84" y="863" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">00 00 00 00</text>
+<text x="796" y="863" fill="#222" font-size="12">pen style: 0, solid</text>
+<rect x="79" y="869" width="45" height="15" rx="2" fill="#b9dfb0"/>
+<text x="20" y="881" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">0120</text>
+<text x="84" y="881" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">04 00</text>
+<text x="796" y="881" fill="#222" font-size="12">points: COUNT 4</text>
+<rect x="79" y="887" width="334" height="15" rx="2" fill="#c9d7ec"/>
+<text x="20" y="899" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">0122</text>
+<text x="84" y="899" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">32 00 00 00 19 00 00 00 E1 00 00 00 19 00 00 00</text>
+<text x="796" y="899" fill="#222" font-size="12">(50, 25), (225, 25), (225, 250), (50, 250): the four corners</text>
+<rect x="79" y="905" width="334" height="15" rx="2" fill="#c9d7ec"/>
+<text x="20" y="917" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">0132</text>
+<text x="84" y="917" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">E1 00 00 00 FA 00 00 00 32 00 00 00 FA 00 00 00</text>
+<rect x="79" y="923" width="334" height="15" rx="2" fill="#e6e6e6"/>
+<text x="20" y="935" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">0142</text>
+<text x="84" y="935" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">FF FF 64 00 0F 00 43 55 6E 64 6F 61 62 6C 65 4F</text>
+<text x="422" y="935" fill="#999" font-family="Consolas, Menlo, monospace" font-size="11.5">..d...CUndoableO</text>
+<text x="560" y="935" fill="#2e5fa8" font-size="11.5">class 16</text>
+<text x="796" y="935" fill="#222" font-size="12">M(CUndoableObject) — the CUcRect is complete</text>
+<rect x="79" y="941" width="107" height="15" rx="2" fill="#e6e6e6"/>
+<text x="20" y="953" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">0152</text>
+<text x="84" y="953" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">62 6A 65 63 74</text>
+<text x="195" y="953" fill="#999" font-family="Consolas, Menlo, monospace" font-size="11.5">bject</text>
+<rect x="79" y="959" width="45" height="15" rx="2" fill="#d4d4d4"/>
+<text x="20" y="971" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">0157</text>
+<text x="84" y="971" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">0D 80</text>
+<text x="560" y="971" fill="#2e5fa8" font-size="11.5">→ class 13</text>
+<text x="764" y="971" fill="#222" font-size="12">frame (embedded rect): M(CRectangle), now as 0x8000 | 13</text>
+<rect x="79" y="977" width="86" height="15" rx="2" fill="#c9d7ec"/>
+<text x="20" y="989" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">0159</text>
+<text x="84" y="989" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">00 00 00 00</text>
+<text x="764" y="989" fill="#222" font-size="12">filled: 0</text>
+<rect x="79" y="995" width="86" height="15" rx="2" fill="#c9d7ec"/>
+<text x="20" y="1007" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">015D</text>
+<text x="84" y="1007" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">FF FF FF 00</text>
+<text x="764" y="1007" fill="#222" font-size="12">fill colour: 0x00FFFFFF</text>
+<rect x="79" y="1013" width="45" height="15" rx="2" fill="#d4d4d4"/>
+<text x="20" y="1025" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">0161</text>
+<text x="84" y="1025" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">0E 80</text>
+<text x="560" y="1025" fill="#2e5fa8" font-size="11.5">→ class 14</text>
+<text x="764" y="1025" fill="#222" font-size="12">M(CTwoPointObject)</text>
+<rect x="79" y="1031" width="45" height="15" rx="2" fill="#d4d4d4"/>
+<text x="20" y="1043" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">0163</text>
+<text x="84" y="1043" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">0F 80</text>
+<text x="560" y="1043" fill="#2e5fa8" font-size="11.5">→ class 15</text>
+<text x="764" y="1043" fill="#222" font-size="12">M(CDrawObject)</text>
+<rect x="79" y="1049" width="86" height="15" rx="2" fill="#c9d7ec"/>
+<text x="20" y="1061" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">0165</text>
+<text x="84" y="1061" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">FF FF FF 00</text>
+<text x="764" y="1061" fill="#222" font-size="12">pen colour: 0x00FFFFFF</text>
+<rect x="79" y="1067" width="86" height="15" rx="2" fill="#c9d7ec"/>
+<text x="20" y="1079" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">0169</text>
+<text x="84" y="1079" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">04 00 00 00</text>
+<text x="764" y="1079" fill="#222" font-size="12">pen width: 4</text>
+<rect x="79" y="1085" width="86" height="15" rx="2" fill="#c9d7ec"/>
+<text x="20" y="1097" fill="#555" font-family="Consolas, Menlo, monospace" font-size="11.5">016D</text>
+<text x="84" y="1097" fill="#111" font-family="Consolas, Menlo, monospace" font-size="11.5">00 00 01 00</text>
+<text x="764" y="1097" fill="#222" font-size="12">pen style: 0x10000</text>
+<text x="20" y="1126" fill="#555">… the frame's points follow, then the rest of the CSubShape and CShape, and the remaining items of the body (§6); its last item, a WORD 0, ends the stream at 0x0EA7.</text>
+<rect x="20" y="1144" width="14" height="14" rx="2" fill="#e6e6e6" stroke="#999"/>
+<text x="40" y="1155" fill="#333">class tag: new class, or first class marker</text>
+<rect x="353.8" y="1144" width="14" height="14" rx="2" fill="#d4d4d4" stroke="#999"/>
+<text x="373.8" y="1155" fill="#333">class marker 0x8000 | n</text>
+<rect x="555.6" y="1144" width="14" height="14" rx="2" fill="#c9d7ec" stroke="#999"/>
+<text x="575.6" y="1155" fill="#333">integer</text>
+<rect x="651.8" y="1144" width="14" height="14" rx="2" fill="#f3e1c4" stroke="#999"/>
+<text x="671.8" y="1155" fill="#333">string</text>
+<rect x="741.4" y="1144" width="14" height="14" rx="2" fill="#b9dfb0" stroke="#999"/>
+<text x="761.4" y="1155" fill="#333">count</text>
+<rect x="824.4" y="1144" width="14" height="14" rx="2" fill="#ffffff" stroke="#bbb" stroke-dasharray="3 2"/>
+<text x="844.4" y="1155" fill="#333">leftover memory</text>
+</svg>

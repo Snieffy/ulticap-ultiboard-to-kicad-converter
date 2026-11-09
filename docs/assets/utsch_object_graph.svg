@@ -1,0 +1,198 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="893" viewBox="0 0 1320 893" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12">
+<rect width="1320" height="893" fill="#ffffff"/>
+<text x="20" y="26" fill="#222" font-size="16" font-weight="600">The object graph of a .UTSCH design — the classes and the references between them</text>
+<text x="20" y="46" fill="#555" >Every reference is a PTR, or a list or map of them (§3.2). Many objects are referred to from several places; each is written in full once, at its first reference, and as a reference after that.</text>
+<text x="20" y="74" fill="#222" font-weight="600">Document body (§6), in stream order — each item holds objects of the class named</text>
+<rect x="20" y="82" width="118" height="46" fill="#e7d3f0" fill-opacity="0.55" stroke="#666"/>
+<text x="27" y="100" fill="#333" >document variants</text>
+<text x="27" y="118" fill="#111" font-weight="600" font-size="11.5">→ CDocVariant ×n</text>
+<rect x="138" y="82" width="132" height="46" fill="#e7d3f0" fill-opacity="0.55" stroke="#666"/>
+<text x="145" y="100" fill="#333" >font list</text>
+<text x="145" y="118" fill="#111" font-weight="600" font-size="11.5">→ CAttribFontInfo ×n</text>
+<rect x="270" y="82" width="92" height="46" fill="#f6d58e" fill-opacity="0.55" stroke="#666"/>
+<text x="277" y="100" fill="#333" >nets</text>
+<text x="277" y="118" fill="#111" font-weight="600" font-size="11.5">→ CNet ×n</text>
+<rect x="362" y="82" width="140" height="46" fill="#b9dfb0" fill-opacity="0.55" stroke="#666"/>
+<text x="369" y="100" fill="#333" >library map, by name</text>
+<text x="369" y="118" fill="#111" font-weight="600" font-size="11.5">→ CShape ×n</text>
+<rect x="502" y="82" width="128" height="46" fill="#bcd2f2" fill-opacity="0.55" stroke="#666"/>
+<text x="509" y="100" fill="#333" >designator map</text>
+<text x="509" y="118" fill="#111" font-weight="600" font-size="11.5">→ CSymbol ×n</text>
+<rect x="630" y="82" width="104" height="46" fill="#f6d58e" fill-opacity="0.55" stroke="#666"/>
+<text x="637" y="100" fill="#333" >sheets</text>
+<text x="637" y="118" fill="#111" font-weight="600" font-size="11.5">→ CSheet ×n</text>
+<rect x="734" y="82" width="196" height="46" fill="#e7d3f0" fill-opacity="0.55" stroke="#666"/>
+<text x="741" y="100" fill="#333" >label index</text>
+<text x="741" y="118" fill="#111" font-weight="600" font-size="11.5">→ CObArray ×n (one CLabelInfo)</text>
+<rect x="930" y="82" width="176" height="46" fill="#e7d3f0" fill-opacity="0.55" stroke="#666"/>
+<text x="937" y="100" fill="#333" >net-name map</text>
+<text x="937" y="118" fill="#111" font-weight="600" font-size="11.5">→ CObArray of CLabelInfo</text>
+<rect x="1106" y="82" width="194" height="46" fill="#e6e6e6" fill-opacity="0.55" stroke="#666"/>
+<text x="1113" y="100" fill="#333" >OLE items, WORD 0</text>
+<text x="1113" y="118" fill="#111" font-weight="600" font-size="11.5">→ (none in any file)</text>
+<path d="M392,262 L392,322" fill="none" stroke="#5a6b80" stroke-width="1.4"/>
+<path d="M136,476 L136,528" fill="none" stroke="#5a6b80" stroke-width="1.4"/>
+<path d="M922,476 L922,528" fill="none" stroke="#5a6b80" stroke-width="1.4"/>
+<path d="M136,622 L136,686" fill="none" stroke="#5a6b80" stroke-width="1.4"/>
+<path d="M398,622 L398,686" fill="none" stroke="#5a6b80" stroke-width="1.4"/>
+<path d="M660,622 L660,686" fill="none" stroke="#5a6b80" stroke-width="1.4"/>
+<path d="M922,622 L922,686" fill="none" stroke="#5a6b80" stroke-width="1.4"/>
+<path d="M1039,204 L1068,204" fill="none" stroke="#5a6b80" stroke-width="1.4"/>
+<path d="M515,358 L544,358" fill="none" stroke="#5a6b80" stroke-width="1.4"/>
+<path d="M777,358 L806,358" fill="none" stroke="#5a6b80" stroke-width="1.4"/>
+<path d="M1039,358 L1068,358" fill="none" stroke="#5a6b80" stroke-width="1.4"/>
+<path d="M253,564 L282,564" fill="none" stroke="#5a6b80" stroke-width="1.4"/>
+<path d="M515,564 L544,564" fill="none" stroke="#5a6b80" stroke-width="1.4"/>
+<path d="M777,564 L806,564" fill="none" stroke="#5a6b80" stroke-width="1.4"/>
+<path d="M1039,564 L1068,564" fill="none" stroke="#5a6b80" stroke-width="1.4"/>
+<path d="M515,722 L544,722" fill="none" stroke="#5a6b80" stroke-width="1.4"/>
+<path d="M777,722 L806,722" fill="none" stroke="#5a6b80" stroke-width="1.4"/>
+<path d="M210,262 L210,276 L322,276 L322,322" fill="none" stroke="#ffffff" stroke-width="7"/>
+<path d="M210,262 L210,276 L322,276 L322,322" fill="none" stroke="#5a6b80" stroke-width="1.4"/>
+<path d="M604,262 L604,290 L462,290 L462,322" fill="none" stroke="#ffffff" stroke-width="7"/>
+<path d="M604,262 L604,290 L462,290 L462,322" fill="none" stroke="#5a6b80" stroke-width="1.4"/>
+<path d="M504,322 L504,304 L846,304 L846,322" fill="none" stroke="#ffffff" stroke-width="7"/>
+<path d="M504,322 L504,304 L846,304 L846,322" fill="none" stroke="#5a6b80" stroke-width="1.4"/>
+<path d="M472,476 L472,504 L584,504 L584,528" fill="none" stroke="#ffffff" stroke-width="7"/>
+<path d="M472,476 L472,504 L584,504 L584,528" fill="none" stroke="#5a6b80" stroke-width="1.4"/>
+<path d="M482,622 L482,643.0 L1184,643.0 L1184,622" fill="none" stroke="#ffffff" stroke-width="7"/>
+<path d="M482,622 L482,643.0 L1184,643.0 L1184,622" fill="none" stroke="#5a6b80" stroke-width="1.4"/>
+<path d="M220,686 L220,664 L744,664 L744,622" fill="none" stroke="#ffffff" stroke-width="7"/>
+<path d="M220,686 L220,664 L744,664 L744,622" fill="none" stroke="#5a6b80" stroke-width="1.4"/>
+<path d="M734,765 L734,783 L1184,783 L1184,765" fill="none" stroke="#ffffff" stroke-width="7"/>
+<path d="M734,765 L734,783 L1184,783 L1184,765" fill="none" stroke="#5a6b80" stroke-width="1.4"/>
+<path d="M342,476 L342,528" fill="none" stroke="#2e5fa8" stroke-width="3"/>
+<text x="350" y="506" fill="#2e5fa8" font-style="italic">is also a</text>
+<rect x="20" y="168" width="233" height="94" fill="#e7d3f0" stroke="#666"/>
+<text x="28" y="186" fill="#111" font-weight="600" font-size="12.5">CLabelInfo<tspan font-weight="400" fill="#666" font-size="11.5">  §10.4</tspan></text>
+<line x1="20" y1="192" x2="253" y2="192" stroke="#666" stroke-opacity="0.35"/>
+<text x="28" y="206" fill="#333" font-size="11.5">attribute<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CUcAttribute</tspan></text>
+<text x="28" y="221" fill="#333" font-size="11.5">sheet<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CSheet</tspan></text>
+<text x="28" y="236" fill="#555" font-size="11.5" font-style="italic">one per place a net name appears</text>
+<rect x="282" y="168" width="233" height="94" fill="#e6e6e6" stroke="#666"/>
+<text x="290" y="186" fill="#111" font-weight="600" font-size="12.5">CActionArray · CUndoInfo<tspan font-weight="400" fill="#666" font-size="11.5">  §8.1</tspan></text>
+<line x1="282" y1="192" x2="515" y2="192" stroke="#666" stroke-opacity="0.35"/>
+<text x="290" y="206" fill="#333" font-size="11.5">CActionArray: steps<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CUndoInfo ×n</tspan></text>
+<text x="290" y="221" fill="#333" font-size="11.5">CUndoInfo: object, previous<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">any object</tspan></text>
+<text x="290" y="236" fill="#555" font-size="11.5" font-style="italic">the undo history; a reader skips it</text>
+<rect x="544" y="168" width="233" height="94" fill="#e6e6e6" stroke="#666"/>
+<text x="552" y="186" fill="#111" font-weight="600" font-size="12.5">Sheet graphics, free text<tspan font-weight="400" fill="#666" font-size="11.5">  §11</tspan></text>
+<line x1="544" y1="192" x2="777" y2="192" stroke="#666" stroke-opacity="0.35"/>
+<text x="552" y="206" fill="#555" font-size="11.5" font-style="italic">CSheetLine, CSheetArc, CSheetRect</text>
+<text x="552" y="221" fill="#555" font-size="11.5" font-style="italic">CUcText, CUcAttribute keyed TEXT</text>
+<text x="552" y="236" fill="#555" font-size="11.5" font-style="italic">no references but a text's font</text>
+<rect x="806" y="168" width="233" height="94" fill="#e6e6e6" stroke="#666"/>
+<text x="814" y="186" fill="#111" font-weight="600" font-size="12.5">Texts and attributes<tspan font-weight="400" fill="#666" font-size="11.5">  §4.2, §4.3</tspan></text>
+<line x1="806" y1="192" x2="1039" y2="192" stroke="#666" stroke-opacity="0.35"/>
+<text x="814" y="206" fill="#333" font-size="11.5">every TEXT: font<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CSerialFont</tspan></text>
+<text x="814" y="221" fill="#333" font-size="11.5">every BASE: attributes<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CUcAttribute,</tspan></text>
+<text x="830" y="236" fill="#111" font-size="11.5" font-weight="600">keyless CUcText ×n</text>
+<text x="814" y="251" fill="#555" font-size="11.5" font-style="italic">CStringAttribute: no references</text>
+<rect x="1068" y="168" width="233" height="94" fill="#e7d3f0" stroke="#666"/>
+<text x="1076" y="186" fill="#111" font-weight="600" font-size="12.5">CAttribFontInfo<tspan font-weight="400" fill="#666" font-size="11.5">  §7.2</tspan></text>
+<line x1="1068" y1="192" x2="1301" y2="192" stroke="#666" stroke-opacity="0.35"/>
+<text x="1076" y="206" fill="#333" font-size="11.5">font<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CSerialFont</tspan></text>
+<text x="1076" y="221" fill="#555" font-size="11.5" font-style="italic">every text refers to one CSerialFont</text>
+<rect x="20" y="322" width="233" height="154" fill="#e7d3f0" stroke="#666"/>
+<text x="28" y="340" fill="#111" font-weight="600" font-size="12.5">CDocVariant<tspan font-weight="400" fill="#666" font-size="11.5">  §7.1</tspan></text>
+<line x1="20" y1="346" x2="253" y2="346" stroke="#666" stroke-opacity="0.35"/>
+<text x="28" y="360" fill="#555" font-size="11.5" font-style="italic">no references</text>
+<text x="28" y="375" fill="#555" font-size="11.5" font-style="italic">referred to by symbol variants</text>
+<rect x="282" y="322" width="233" height="154" fill="#f6d58e" stroke="#666"/>
+<text x="290" y="340" fill="#111" font-weight="600" font-size="12.5">CSheet<tspan font-weight="400" fill="#666" font-size="11.5">  §8</tspan></text>
+<line x1="282" y1="346" x2="515" y2="346" stroke="#666" stroke-opacity="0.35"/>
+<text x="290" y="360" fill="#333" font-size="11.5">parent<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CSheet</tspan></text>
+<text x="290" y="375" fill="#333" font-size="11.5">connections<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CConnection ×n</tspan></text>
+<text x="290" y="390" fill="#333" font-size="11.5">undo: owner<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CSheet (itself)</tspan></text>
+<text x="290" y="405" fill="#333" font-size="11.5">undo: newest step<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CActionArray</tspan></text>
+<text x="290" y="420" fill="#333" font-size="11.5">live objects<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CSymbolPart, CWire, CBus,</tspan></text>
+<text x="306" y="435" fill="#111" font-size="11.5" font-weight="600">sheet graphics, free texts ×n</text>
+<text x="290" y="450" fill="#333" font-size="11.5">undo: steps<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CActionArray ×10</tspan></text>
+<text x="290" y="465" fill="#555" font-size="11.5" font-style="italic">then a complete CSymbol (its frame)</text>
+<rect x="544" y="322" width="233" height="154" fill="#f6d58e" stroke="#666"/>
+<text x="552" y="340" fill="#111" font-weight="600" font-size="12.5">CWire · CBus<tspan font-weight="400" fill="#666" font-size="11.5">  §10.3</tspan></text>
+<line x1="544" y1="346" x2="777" y2="346" stroke="#666" stroke-opacity="0.35"/>
+<text x="552" y="360" fill="#333" font-size="11.5">connections<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CConnection ×n</tspan></text>
+<text x="552" y="375" fill="#555" font-size="11.5" font-style="italic">CBus: M(CWire), then as CWire</text>
+<rect x="806" y="322" width="233" height="154" fill="#f6d58e" stroke="#666"/>
+<text x="814" y="340" fill="#111" font-weight="600" font-size="12.5">CConnection<tspan font-weight="400" fill="#666" font-size="11.5">  §10.2</tspan></text>
+<line x1="806" y1="346" x2="1039" y2="346" stroke="#666" stroke-opacity="0.35"/>
+<text x="814" y="360" fill="#333" font-size="11.5">items<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CSymbolPartPin, CWire,</tspan></text>
+<text x="830" y="375" fill="#111" font-size="11.5" font-weight="600">CBus ×n</text>
+<text x="814" y="390" fill="#333" font-size="11.5">sheet<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CSheet</tspan></text>
+<text x="814" y="405" fill="#333" font-size="11.5">net<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CNet (null: no net)</tspan></text>
+<rect x="1068" y="322" width="233" height="154" fill="#f6d58e" stroke="#666"/>
+<text x="1076" y="340" fill="#111" font-weight="600" font-size="12.5">CNet<tspan font-weight="400" fill="#666" font-size="11.5">  §10.1</tspan></text>
+<line x1="1068" y1="346" x2="1301" y2="346" stroke="#666" stroke-opacity="0.35"/>
+<text x="1076" y="360" fill="#333" font-size="11.5">connections<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CConnection ×n</tspan></text>
+<rect x="20" y="528" width="233" height="94" fill="#bcd2f2" stroke="#666"/>
+<text x="28" y="546" fill="#111" font-weight="600" font-size="12.5">CSymbolVariant<tspan font-weight="400" fill="#666" font-size="11.5">  §9.5</tspan></text>
+<line x1="20" y1="552" x2="253" y2="552" stroke="#666" stroke-opacity="0.35"/>
+<text x="28" y="566" fill="#333" font-size="11.5">symbol<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CSymbol</tspan></text>
+<text x="28" y="581" fill="#333" font-size="11.5">values<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CStringAttribute ×3</tspan></text>
+<text x="28" y="596" fill="#333" font-size="11.5">document variants<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CDocVariant ×n</tspan></text>
+<text x="28" y="611" fill="#333" font-size="11.5">part variants<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CSymbolPartVariant ×n</tspan></text>
+<rect x="282" y="528" width="233" height="94" fill="#bcd2f2" stroke="#666"/>
+<text x="290" y="546" fill="#111" font-weight="600" font-size="12.5">CSymbol<tspan font-weight="400" fill="#666" font-size="11.5">  §9.1</tspan></text>
+<line x1="282" y1="552" x2="515" y2="552" stroke="#666" stroke-opacity="0.35"/>
+<text x="290" y="566" fill="#333" font-size="11.5">shape<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CShape</tspan></text>
+<text x="290" y="581" fill="#333" font-size="11.5">parts<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CSymbolPart ×n</tspan></text>
+<text x="290" y="596" fill="#333" font-size="11.5">pins, by number<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CSymbolPin ×n</tspan></text>
+<text x="290" y="611" fill="#333" font-size="11.5">variants, by name<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CSymbolVariant ×n</tspan></text>
+<rect x="544" y="528" width="233" height="94" fill="#bcd2f2" stroke="#666"/>
+<text x="552" y="546" fill="#111" font-weight="600" font-size="12.5">CSymbolPart<tspan font-weight="400" fill="#666" font-size="11.5">  §9.2</tspan></text>
+<line x1="544" y1="552" x2="777" y2="552" stroke="#666" stroke-opacity="0.35"/>
+<text x="552" y="566" fill="#333" font-size="11.5">gate drawing<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CSubShape</tspan></text>
+<text x="552" y="581" fill="#333" font-size="11.5">symbol<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CSymbol (null: not placed)</tspan></text>
+<text x="552" y="596" fill="#333" font-size="11.5">pins<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CSymbolPartPin ×n</tspan></text>
+<text x="552" y="611" fill="#333" font-size="11.5">variants<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CSymbolPartVariant ×n</tspan></text>
+<rect x="806" y="528" width="233" height="94" fill="#bcd2f2" stroke="#666"/>
+<text x="814" y="546" fill="#111" font-weight="600" font-size="12.5">CSymbolPartPin<tspan font-weight="400" fill="#666" font-size="11.5">  §9.4</tspan></text>
+<line x1="806" y1="552" x2="1039" y2="552" stroke="#666" stroke-opacity="0.35"/>
+<text x="814" y="566" fill="#333" font-size="11.5">shape pin<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CShapePin</tspan></text>
+<text x="814" y="581" fill="#333" font-size="11.5">part<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CSymbolPart</tspan></text>
+<text x="814" y="596" fill="#333" font-size="11.5">connection<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CConnection</tspan></text>
+<text x="814" y="611" fill="#333" font-size="11.5">symbol pin<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CSymbolPin</tspan></text>
+<rect x="1068" y="528" width="233" height="94" fill="#bcd2f2" stroke="#666"/>
+<text x="1076" y="546" fill="#111" font-weight="600" font-size="12.5">CSymbolPin<tspan font-weight="400" fill="#666" font-size="11.5">  §9.3</tspan></text>
+<line x1="1068" y1="552" x2="1301" y2="552" stroke="#666" stroke-opacity="0.35"/>
+<text x="1076" y="566" fill="#333" font-size="11.5">symbol<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CSymbol</tspan></text>
+<text x="1076" y="581" fill="#333" font-size="11.5">placed pins<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CSymbolPartPin ×n</tspan></text>
+<rect x="20" y="686" width="233" height="79" fill="#bcd2f2" stroke="#666"/>
+<text x="28" y="704" fill="#111" font-weight="600" font-size="12.5">CSymbolPartVariant<tspan font-weight="400" fill="#666" font-size="11.5">  §9.5</tspan></text>
+<line x1="20" y1="710" x2="253" y2="710" stroke="#666" stroke-opacity="0.35"/>
+<text x="28" y="724" fill="#555" font-size="11.5" font-style="italic">base part: the unit's attributes</text>
+<text x="28" y="739" fill="#333" font-size="11.5">symbol variant<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CSymbolVariant</tspan></text>
+<rect x="282" y="686" width="233" height="79" fill="#b9dfb0" stroke="#666"/>
+<text x="290" y="704" fill="#111" font-weight="600" font-size="12.5">CShape<tspan font-weight="400" fill="#666" font-size="11.5">  §5.1</tspan></text>
+<line x1="282" y1="710" x2="515" y2="710" stroke="#666" stroke-opacity="0.35"/>
+<text x="290" y="724" fill="#333" font-size="11.5">gate drawings<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CSubShape ×n</tspan></text>
+<rect x="544" y="686" width="233" height="79" fill="#b9dfb0" stroke="#666"/>
+<text x="552" y="704" fill="#111" font-weight="600" font-size="12.5">CSubShape<tspan font-weight="400" fill="#666" font-size="11.5">  §5.2</tspan></text>
+<line x1="544" y1="710" x2="777" y2="710" stroke="#666" stroke-opacity="0.35"/>
+<text x="552" y="724" fill="#333" font-size="11.5">graphics<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">drawing objects ×n</tspan></text>
+<text x="552" y="739" fill="#333" font-size="11.5">pins<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CShapePin ×n</tspan></text>
+<rect x="806" y="686" width="233" height="79" fill="#b9dfb0" stroke="#666"/>
+<text x="814" y="704" fill="#111" font-weight="600" font-size="12.5">CShapePin<tspan font-weight="400" fill="#666" font-size="11.5">  §5.3</tspan></text>
+<line x1="806" y1="710" x2="1039" y2="710" stroke="#666" stroke-opacity="0.35"/>
+<text x="814" y="724" fill="#333" font-size="11.5">number labels<tspan fill="#888"> → </tspan><tspan fill="#111" font-weight="600">CUcText, one per gate</tspan></text>
+<rect x="1068" y="686" width="233" height="79" fill="#e6e6e6" stroke="#666"/>
+<text x="1076" y="704" fill="#111" font-weight="600" font-size="12.5">Drawing objects<tspan font-weight="400" fill="#666" font-size="11.5">  §4.5</tspan></text>
+<line x1="1068" y1="710" x2="1301" y2="710" stroke="#666" stroke-opacity="0.35"/>
+<text x="1076" y="724" fill="#555" font-size="11.5" font-style="italic">CUcPolyline, CUcLine, CUcArc, CUcPie,</text>
+<text x="1076" y="739" fill="#555" font-size="11.5" font-style="italic">CUcRect, CUcEllipse, CUcPolygon</text>
+<text x="1076" y="754" fill="#555" font-size="11.5" font-style="italic">no references</text>
+<rect x="20" y="802" width="14" height="14" fill="#e7d3f0" stroke="#666"/>
+<text x="40" y="813" fill="#333" >document level</text>
+<rect x="190" y="802" width="14" height="14" fill="#f6d58e" stroke="#666"/>
+<text x="210" y="813" fill="#333" >sheets and nets</text>
+<rect x="360" y="802" width="14" height="14" fill="#bcd2f2" stroke="#666"/>
+<text x="380" y="813" fill="#333" >placed symbols</text>
+<rect x="530" y="802" width="14" height="14" fill="#b9dfb0" stroke="#666"/>
+<text x="550" y="813" fill="#333" >shape library</text>
+<rect x="700" y="802" width="14" height="14" fill="#e6e6e6" stroke="#666"/>
+<text x="720" y="813" fill="#333" >texts, graphics, undo</text>
+<text x="20" y="837" fill="#555" >A line joins two classes whose objects refer to one another or one to the other; the rows of the boxes give the fields: "field → class" is one reference, "×n" a list or map of them.</text>
+<text x="20" y="853" fill="#555" >Only references are shown; the other fields of each class are in the section named. Texts and attributes occur in almost every class and their lines are left out.</text>
+<text x="20" y="869" fill="#555" >Blue: a CSheet continues as a complete CSymbol, its frame (§8); the subsheet box a parent shows is that symbol's part (§8.2).</text>
+</svg>

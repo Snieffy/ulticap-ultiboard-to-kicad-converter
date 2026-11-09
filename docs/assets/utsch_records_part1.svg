@@ -1,0 +1,244 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="1020" viewBox="0 0 1320 1020" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12">
+<rect width="1320" height="1020" fill="#ffffff"/>
+<text x="20" y="26" fill="#222" font-size="16" font-weight="600">Record layouts I — building blocks and shapes (§4, §5)</text>
+<text x="20" y="46" fill="#555">Each strip is the data of one object after its class tag (§3.2), field by field in stored order; the number above a cell is its offset from the start of that data,</text>
+<text x="20" y="62" fill="#555">shown while every field before it has a fixed size. Sizes are in bytes; "2+" is a 2-byte tag, followed by the object itself where it is first written.</text>
+<text x="20" y="108" fill="#111" font-weight="600" font-size="13">TEXT</text>
+<text x="20" y="123" fill="#666" font-size="11">embedded CUcText, §4.2</text>
+<text x="20" y="137" fill="#666" font-size="11" font-style="italic">no tag of its own</text>
+<rect x="216" y="92" width="107.0" height="40" fill="#f3e1c4" stroke="#666"/>
+<text x="223" y="108" fill="#111" font-weight="600" font-size="11.5">string<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="223" y="124" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">STRING · 1 + n</text>
+<text x="218" y="88" fill="#2e5fa8" font-size="10" font-family="Consolas, Menlo, monospace">+0</text>
+<rect x="323.0" y="92" width="140.2" height="40" fill="#e6e6e6" stroke="#666"/>
+<text x="393.1" y="109" fill="#444" font-size="10.5" text-anchor="middle">M(CTextProperties)</text>
+<text x="393.1" y="124" fill="#666" font-size="10" text-anchor="middle" font-family="Consolas, Menlo, monospace">2+</text>
+<rect x="463.2" y="92" width="191.5" height="40" fill="#f3e1c4" stroke="#666"/>
+<text x="470.2" y="108" fill="#111" font-weight="600" font-size="11.5">frame<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="470.2" y="124" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">embedded rect · var. (§4.5)</text>
+<rect x="654.7" y="92" width="74.5" height="40" fill="#c9d7ec" stroke="#666"/>
+<text x="661.7" y="108" fill="#111" font-weight="600" font-size="11.5">x<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="661.7" y="124" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">INT32 · 4</text>
+<rect x="729.2" y="92" width="74.5" height="40" fill="#c9d7ec" stroke="#666"/>
+<text x="736.2" y="108" fill="#111" font-weight="600" font-size="11.5">y<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="736.2" y="124" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">INT32 · 4</text>
+<rect x="803.7" y="92" width="71.2" height="40" fill="#c9d7ec" stroke="#666"/>
+<text x="810.7" y="108" fill="#111" font-weight="600" font-size="11.5">key type<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="810.7" y="124" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">WORD · 2</text>
+<rect x="874.9000000000001" y="92" width="68.0" height="40" fill="#c9d7ec" stroke="#666"/>
+<text x="881.9000000000001" y="108" fill="#111" font-weight="600" font-size="11.5">anchor<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="881.9000000000001" y="124" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">BYTE · 1</text>
+<rect x="942.9000000000001" y="92" width="68.0" height="40" fill="#c9d7ec" stroke="#666"/>
+<text x="949.9000000000001" y="108" fill="#111" font-weight="600" font-size="11.5">visible<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="949.9000000000001" y="124" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">BYTE · 1</text>
+<rect x="1010.9000000000001" y="92" width="74.5" height="40" fill="#c9d7ec" stroke="#666"/>
+<text x="1017.9000000000001" y="108" fill="#111" font-weight="600" font-size="11.5">colour<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="1017.9000000000001" y="124" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">DWORD · 4</text>
+<rect x="1085.4" y="92" width="74.5" height="40" fill="#c9d7ec" stroke="#666"/>
+<text x="1092.4" y="108" fill="#111" font-weight="600" font-size="11.5">vertical<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="1092.4" y="124" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">DWORD · 4</text>
+<rect x="1159.9" y="92" width="130.4" height="40" fill="#f6d58e" stroke="#666"/>
+<text x="1166.9" y="108" fill="#111" font-weight="600" font-size="11.5">font<tspan font-weight="400" fill="#333"> → CSerialFont</tspan></text>
+<text x="1166.9" y="124" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">PTR · 2+</text>
+<text x="202" y="183" fill="#888">↳</text>
+<rect x="216" y="158" width="112.60000000000001" height="40" fill="#e6e6e6" stroke="#666"/>
+<text x="272.3" y="175" fill="#444" font-size="10.5" text-anchor="middle">M(CSchemaPart)</text>
+<text x="272.3" y="190" fill="#666" font-size="10" text-anchor="middle" font-family="Consolas, Menlo, monospace">2+</text>
+<rect x="328.6" y="158" width="140.2" height="40" fill="#e6e6e6" stroke="#666"/>
+<text x="398.70000000000005" y="175" fill="#444" font-size="10.5" text-anchor="middle">M(CUndoableObject)</text>
+<text x="398.70000000000005" y="190" fill="#666" font-size="10" text-anchor="middle" font-family="Consolas, Menlo, monospace">2+</text>
+<text x="20" y="262" fill="#111" font-weight="600" font-size="13">BASE</text>
+<text x="20" y="277" fill="#666" font-size="11">the base part, §4.1</text>
+<text x="20" y="291" fill="#666" font-size="11" font-style="italic">ends most objects</text>
+<rect x="216" y="246" width="174.70000000000002" height="40" fill="#e6e6e6" stroke="#666"/>
+<text x="303.35" y="263" fill="#444" font-size="10.5" text-anchor="middle">M(CSchemaAttributePart)</text>
+<text x="303.35" y="278" fill="#666" font-size="10" text-anchor="middle" font-family="Consolas, Menlo, monospace">2+</text>
+<text x="218" y="242" fill="#2e5fa8" font-size="10" font-family="Consolas, Menlo, monospace">+0</text>
+<rect x="390.70000000000005" y="246" width="233.8" height="40" fill="#b9dfb0" stroke="#666"/>
+<text x="397.70000000000005" y="262" fill="#111" font-weight="600" font-size="11.5">attributes<tspan font-weight="400" fill="#333"> → CUcAttribute, CUcText</tspan></text>
+<text x="397.70000000000005" y="278" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">ARRAY · 2 + n × 2+</text>
+<rect x="624.5" y="246" width="112.60000000000001" height="40" fill="#e6e6e6" stroke="#666"/>
+<text x="680.8" y="263" fill="#444" font-size="10.5" text-anchor="middle">M(CSchemaPart)</text>
+<text x="680.8" y="278" fill="#666" font-size="10" text-anchor="middle" font-family="Consolas, Menlo, monospace">2+</text>
+<rect x="737.1" y="246" width="140.2" height="40" fill="#e6e6e6" stroke="#666"/>
+<text x="807.2" y="263" fill="#444" font-size="10.5" text-anchor="middle">M(CUndoableObject)</text>
+<text x="807.2" y="278" fill="#666" font-size="10" text-anchor="middle" font-family="Consolas, Menlo, monospace">2+</text>
+<text x="20" y="350" fill="#111" font-weight="600" font-size="13">drawing record</text>
+<text x="20" y="365" fill="#666" font-size="11">§4.4</text>
+<text x="20" y="379" fill="#666" font-size="11" font-style="italic">after M(CDrawObject)</text>
+<rect x="216" y="334" width="85.0" height="40" fill="#c9d7ec" stroke="#666"/>
+<text x="223" y="350" fill="#111" font-weight="600" font-size="11.5">pen colour<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="223" y="366" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">DWORD · 4</text>
+<text x="218" y="330" fill="#2e5fa8" font-size="10" font-family="Consolas, Menlo, monospace">+0</text>
+<rect x="301.0" y="334" width="78.1" height="40" fill="#c9d7ec" stroke="#666"/>
+<text x="308.0" y="350" fill="#111" font-weight="600" font-size="11.5">pen width<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="308.0" y="366" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">DWORD · 4</text>
+<text x="303.0" y="330" fill="#2e5fa8" font-size="10" font-family="Consolas, Menlo, monospace">+4</text>
+<rect x="379.1" y="334" width="78.1" height="40" fill="#c9d7ec" stroke="#666"/>
+<text x="386.1" y="350" fill="#111" font-weight="600" font-size="11.5">pen style<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="386.1" y="366" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">DWORD · 4</text>
+<text x="381.1" y="330" fill="#2e5fa8" font-size="10" font-family="Consolas, Menlo, monospace">+8</text>
+<rect x="457.20000000000005" y="334" width="165.5" height="40" fill="#b9dfb0" stroke="#666"/>
+<text x="464.20000000000005" y="350" fill="#111" font-weight="600" font-size="11.5">points<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="464.20000000000005" y="366" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">POINTS · WORD n + n × 8</text>
+<text x="459.20000000000005" y="330" fill="#2e5fa8" font-size="10" font-family="Consolas, Menlo, monospace">+12</text>
+<rect x="622.7" y="334" width="140.2" height="40" fill="#e6e6e6" stroke="#666"/>
+<text x="692.8000000000001" y="351" fill="#444" font-size="10.5" text-anchor="middle">M(CUndoableObject)</text>
+<text x="692.8000000000001" y="366" fill="#666" font-size="10" text-anchor="middle" font-family="Consolas, Menlo, monospace">2+</text>
+<text x="20" y="438" fill="#111" font-weight="600" font-size="13">embedded rect</text>
+<text x="20" y="453" fill="#666" font-size="11">§4.5</text>
+<text x="20" y="467" fill="#666" font-size="11" font-style="italic">frames; no tag of its own</text>
+<rect x="216" y="422" width="105.7" height="40" fill="#e6e6e6" stroke="#666"/>
+<text x="268.85" y="439" fill="#444" font-size="10.5" text-anchor="middle">M(CRectangle)</text>
+<text x="268.85" y="454" fill="#666" font-size="10" text-anchor="middle" font-family="Consolas, Menlo, monospace">2+</text>
+<text x="218" y="418" fill="#2e5fa8" font-size="10" font-family="Consolas, Menlo, monospace">+0</text>
+<rect x="321.7" y="422" width="74.5" height="40" fill="#c9d7ec" stroke="#666"/>
+<text x="328.7" y="438" fill="#111" font-weight="600" font-size="11.5">filled<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="328.7" y="454" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">DWORD · 4</text>
+<rect x="396.2" y="422" width="91.9" height="40" fill="#c9d7ec" stroke="#666"/>
+<text x="403.2" y="438" fill="#111" font-weight="600" font-size="11.5">fill colour<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="403.2" y="454" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">DWORD · 4</text>
+<rect x="488.1" y="422" width="140.2" height="40" fill="#e6e6e6" stroke="#666"/>
+<text x="558.2" y="439" fill="#444" font-size="10.5" text-anchor="middle">M(CTwoPointObject)</text>
+<text x="558.2" y="454" fill="#666" font-size="10" text-anchor="middle" font-family="Consolas, Menlo, monospace">2+</text>
+<rect x="628.3" y="422" width="112.60000000000001" height="40" fill="#e6e6e6" stroke="#666"/>
+<text x="684.5999999999999" y="439" fill="#444" font-size="10.5" text-anchor="middle">M(CDrawObject)</text>
+<text x="684.5999999999999" y="454" fill="#666" font-size="10" text-anchor="middle" font-family="Consolas, Menlo, monospace">2+</text>
+<rect x="740.9" y="422" width="120.0" height="40" fill="#f3e1c4" stroke="#666"/>
+<text x="747.9" y="438" fill="#111" font-weight="600" font-size="11.5">drawing record<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="747.9" y="454" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">var. (4 corners)</text>
+<text x="20" y="526" fill="#111" font-weight="600" font-size="13">CUcAttribute</text>
+<text x="20" y="541" fill="#666" font-size="11">§4.3</text>
+<text x="20" y="555" fill="#666" font-size="11" font-style="italic">an attribute with presentation</text>
+<rect x="216" y="510" width="107.0" height="40" fill="#f3e1c4" stroke="#666"/>
+<text x="223" y="526" fill="#111" font-weight="600" font-size="11.5">key<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="223" y="542" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">STRING · 1 + n</text>
+<text x="218" y="506" fill="#2e5fa8" font-size="10" font-family="Consolas, Menlo, monospace">+0</text>
+<rect x="323.0" y="510" width="85.0" height="40" fill="#e6e6e6" stroke="#666"/>
+<text x="365.5" y="527" fill="#444" font-size="10.5" text-anchor="middle">M(CUcText)</text>
+<text x="365.5" y="542" fill="#666" font-size="10" text-anchor="middle" font-family="Consolas, Menlo, monospace">2+</text>
+<rect x="408.0" y="510" width="133.0" height="40" fill="#f3e1c4" stroke="#666"/>
+<text x="415.0" y="526" fill="#111" font-weight="600" font-size="11.5">value<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="415.0" y="542" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">TEXT · var. (§4.2)</text>
+<text x="20" y="614" fill="#111" font-weight="600" font-size="13">CStringAttribute</text>
+<text x="20" y="629" fill="#666" font-size="11">§4.3</text>
+<text x="20" y="643" fill="#666" font-size="11" font-style="italic">a plain attribute</text>
+<rect x="216" y="598" width="107.0" height="40" fill="#f3e1c4" stroke="#666"/>
+<text x="223" y="614" fill="#111" font-weight="600" font-size="11.5">value<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="223" y="630" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">STRING · 1 + n</text>
+<text x="218" y="594" fill="#2e5fa8" font-size="10" font-family="Consolas, Menlo, monospace">+0</text>
+<rect x="323.0" y="598" width="107.0" height="40" fill="#f3e1c4" stroke="#666"/>
+<text x="330.0" y="614" fill="#111" font-weight="600" font-size="11.5">key<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="330.0" y="630" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">STRING · 1 + n</text>
+<rect x="430.0" y="598" width="71.2" height="40" fill="#c9d7ec" stroke="#666"/>
+<text x="437.0" y="614" fill="#111" font-weight="600" font-size="11.5">key type<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="437.0" y="630" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">WORD · 2</text>
+<rect x="501.2" y="598" width="112.60000000000001" height="40" fill="#e6e6e6" stroke="#666"/>
+<text x="557.5" y="615" fill="#444" font-size="10.5" text-anchor="middle">M(CSchemaPart)</text>
+<text x="557.5" y="630" fill="#666" font-size="10" text-anchor="middle" font-family="Consolas, Menlo, monospace">2+</text>
+<rect x="613.8" y="598" width="140.2" height="40" fill="#e6e6e6" stroke="#666"/>
+<text x="683.9" y="615" fill="#444" font-size="10.5" text-anchor="middle">M(CUndoableObject)</text>
+<text x="683.9" y="630" fill="#666" font-size="10" text-anchor="middle" font-family="Consolas, Menlo, monospace">2+</text>
+<text x="20" y="702" fill="#111" font-weight="600" font-size="13">CShape</text>
+<text x="20" y="717" fill="#666" font-size="11">§5.1</text>
+<text x="20" y="731" fill="#666" font-size="11" font-style="italic">symbol definition</text>
+<rect x="216" y="686" width="180.10000000000002" height="40" fill="#b9dfb0" stroke="#666"/>
+<text x="223" y="702" fill="#111" font-weight="600" font-size="11.5">gate drawings<tspan font-weight="400" fill="#333"> → CSubShape</tspan></text>
+<text x="223" y="718" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">ARRAY · 2 + n × 2+</text>
+<text x="218" y="682" fill="#2e5fa8" font-size="10" font-family="Consolas, Menlo, monospace">+0</text>
+<rect x="396.1" y="686" width="147.1" height="40" fill="#f3e1c4" stroke="#666"/>
+<text x="403.1" y="702" fill="#111" font-weight="600" font-size="11.5">designator template<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="403.1" y="718" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">TEXT · var. (§4.2)</text>
+<rect x="543.2" y="686" width="107.0" height="40" fill="#f3e1c4" stroke="#666"/>
+<text x="550.2" y="702" fill="#111" font-weight="600" font-size="11.5">name<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="550.2" y="718" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">STRING · 1 + n</text>
+<rect x="650.2" y="686" width="119.5" height="40" fill="#c9d7ec" stroke="#666"/>
+<text x="657.2" y="702" fill="#111" font-weight="600" font-size="11.5">show in netlist<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="657.2" y="718" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">DWORD · 4</text>
+<rect x="769.7" y="686" width="87.5" height="40" fill="#e7d3f0" stroke="#666"/>
+<text x="776.7" y="702" fill="#111" font-weight="600" font-size="11.5">BASE<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="776.7" y="718" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">var. (§4.1)</text>
+<text x="20" y="790" fill="#111" font-weight="600" font-size="13">CSubShape</text>
+<text x="20" y="805" fill="#666" font-size="11">§5.2</text>
+<text x="20" y="819" fill="#666" font-size="11" font-style="italic">gate drawing</text>
+<rect x="216" y="774" width="182.8" height="40" fill="#b9dfb0" stroke="#666"/>
+<text x="223" y="790" fill="#111" font-weight="600" font-size="11.5">graphics<tspan font-weight="400" fill="#333"> → drawing objects</tspan></text>
+<text x="223" y="806" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">ARRAY · 2 + n × 2+</text>
+<text x="218" y="770" fill="#2e5fa8" font-size="10" font-family="Consolas, Menlo, monospace">+0</text>
+<rect x="398.8" y="774" width="191.5" height="40" fill="#f3e1c4" stroke="#666"/>
+<text x="405.8" y="790" fill="#111" font-weight="600" font-size="11.5">frame<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="405.8" y="806" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">embedded rect · var. (§4.5)</text>
+<rect x="590.3" y="774" width="133.0" height="40" fill="#b9dfb0" stroke="#666"/>
+<text x="597.3" y="790" fill="#111" font-weight="600" font-size="11.5">pins<tspan font-weight="400" fill="#333"> → CShapePin</tspan></text>
+<text x="597.3" y="806" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">ARRAY · 2 + n × 2+</text>
+<rect x="723.3" y="774" width="133.0" height="40" fill="#f3e1c4" stroke="#666"/>
+<text x="730.3" y="790" fill="#111" font-weight="600" font-size="11.5">designator text<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="730.3" y="806" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">TEXT · var. (§4.2)</text>
+<rect x="856.3" y="774" width="85.0" height="40" fill="#c9d7ec" stroke="#666"/>
+<text x="863.3" y="790" fill="#111" font-weight="600" font-size="11.5">gate count<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="863.3" y="806" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">DWORD · 4</text>
+<rect x="941.3" y="774" width="107.0" height="40" fill="#f3e1c4" stroke="#666"/>
+<text x="948.3" y="790" fill="#111" font-weight="600" font-size="11.5">name<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="948.3" y="806" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">STRING · 1 + n</text>
+<rect x="1048.3" y="774" width="140.2" height="40" fill="#c9d7ec" stroke="#666"/>
+<text x="1055.3" y="790" fill="#111" font-weight="600" font-size="11.5">external gate swap<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="1055.3" y="806" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">DWORD · 4</text>
+<rect x="1188.5" y="774" width="87.5" height="40" fill="#e7d3f0" stroke="#666"/>
+<text x="1195.5" y="790" fill="#111" font-weight="600" font-size="11.5">BASE<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="1195.5" y="806" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">var. (§4.1)</text>
+<text x="20" y="878" fill="#111" font-weight="600" font-size="13">CShapePin</text>
+<text x="20" y="893" fill="#666" font-size="11">§5.3</text>
+<text x="20" y="907" fill="#666" font-size="11" font-style="italic">a pin of a gate drawing</text>
+<rect x="216" y="862" width="74.5" height="40" fill="#c9d7ec" stroke="#666"/>
+<text x="223" y="878" fill="#111" font-weight="600" font-size="11.5">x<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="223" y="894" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">INT32 · 4</text>
+<text x="218" y="858" fill="#2e5fa8" font-size="10" font-family="Consolas, Menlo, monospace">+0</text>
+<rect x="290.5" y="862" width="74.5" height="40" fill="#c9d7ec" stroke="#666"/>
+<text x="297.5" y="878" fill="#111" font-weight="600" font-size="11.5">y<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="297.5" y="894" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">INT32 · 4</text>
+<text x="292.5" y="858" fill="#2e5fa8" font-size="10" font-family="Consolas, Menlo, monospace">+4</text>
+<rect x="365.0" y="862" width="126.4" height="40" fill="#c9d7ec" stroke="#666"/>
+<text x="372.0" y="878" fill="#111" font-weight="600" font-size="11.5">internal connect<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="372.0" y="894" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">BYTE · 1</text>
+<text x="367.0" y="858" fill="#2e5fa8" font-size="10" font-family="Consolas, Menlo, monospace">+8</text>
+<rect x="491.4" y="862" width="74.5" height="40" fill="#c9d7ec" stroke="#666"/>
+<text x="498.4" y="878" fill="#111" font-weight="600" font-size="11.5">colour<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="498.4" y="894" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">DWORD · 4</text>
+<text x="493.4" y="858" fill="#2e5fa8" font-size="10" font-family="Consolas, Menlo, monospace">+9</text>
+<rect x="565.9" y="862" width="68.0" height="40" fill="#c9d7ec" stroke="#666"/>
+<text x="572.9" y="878" fill="#111" font-weight="600" font-size="11.5">style<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="572.9" y="894" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">BYTE · 1</text>
+<text x="567.9" y="858" fill="#2e5fa8" font-size="10" font-family="Consolas, Menlo, monospace">+13</text>
+<rect x="633.9" y="862" width="91.9" height="40" fill="#c9d7ec" stroke="#666"/>
+<text x="640.9" y="878" fill="#111" font-weight="600" font-size="11.5">orientation<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="640.9" y="894" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">DWORD · 4</text>
+<text x="635.9" y="858" fill="#2e5fa8" font-size="10" font-family="Consolas, Menlo, monospace">+14</text>
+<rect x="725.8" y="862" width="68.0" height="40" fill="#c9d7ec" stroke="#666"/>
+<text x="732.8" y="878" fill="#111" font-weight="600" font-size="11.5">type<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="732.8" y="894" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">BYTE · 1</text>
+<text x="727.8" y="858" fill="#2e5fa8" font-size="10" font-family="Consolas, Menlo, monospace">+18</text>
+<rect x="793.8" y="862" width="91.9" height="40" fill="#c9d7ec" stroke="#666"/>
+<text x="800.8" y="878" fill="#111" font-weight="600" font-size="11.5">swap number<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="800.8" y="894" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">BYTE · 1</text>
+<text x="795.8" y="858" fill="#2e5fa8" font-size="10" font-family="Consolas, Menlo, monospace">+19</text>
+<rect x="885.6999999999999" y="862" width="167.7" height="40" fill="#b9dfb0" stroke="#666"/>
+<text x="892.6999999999999" y="878" fill="#111" font-weight="600" font-size="11.5">number labels<tspan font-weight="400" fill="#333"> → CUcText</tspan></text>
+<text x="892.6999999999999" y="894" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">ARRAY · 2 + n × 2+</text>
+<text x="887.6999999999999" y="858" fill="#2e5fa8" font-size="10" font-family="Consolas, Menlo, monospace">+20</text>
+<rect x="1053.3999999999999" y="862" width="87.5" height="40" fill="#e7d3f0" stroke="#666"/>
+<text x="1060.3999999999999" y="878" fill="#111" font-weight="600" font-size="11.5">BASE<tspan font-weight="400" fill="#333"></tspan></text>
+<text x="1060.3999999999999" y="894" fill="#444" font-size="10.5" font-family="Consolas, Menlo, monospace">var. (§4.1)</text>
+<rect x="20" y="969" width="14" height="14" fill="#c9d7ec" stroke="#666"/>
+<text x="40" y="980" fill="#333">fixed size</text>
+<rect x="216" y="969" width="14" height="14" fill="#f6d58e" stroke="#666"/>
+<text x="236" y="980" fill="#333">reference (PTR)</text>
+<rect x="412" y="969" width="14" height="14" fill="#b9dfb0" stroke="#666"/>
+<text x="432" y="980" fill="#333">list or map</text>
+<rect x="608" y="969" width="14" height="14" fill="#f3e1c4" stroke="#666"/>
+<text x="628" y="980" fill="#333">string, text, embedded part</text>
+<rect x="804" y="969" width="14" height="14" fill="#e7d3f0" stroke="#666"/>
+<text x="824" y="980" fill="#333">base part</text>
+<rect x="1000" y="969" width="14" height="14" fill="#e6e6e6" stroke="#666"/>
+<text x="1020" y="980" fill="#333">class marker M(…)</text>
+<text x="20" y="1002" fill="#555">A dashed cell is present only under a condition. A cell named by its type alone is an embedded part, drawn as a strip of its own where it is described.</text>
+</svg>

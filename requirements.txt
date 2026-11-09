@@ -1,0 +1,3 @@
+# KIUT runs on Python 3.13 with its standard library and tkinter (the GUIs; on Linux
+# usually a separate package, e.g. python3-tk). The command-line converters need nothing else.
+PySide6    # the viewer (kiut_viewer.py) only
