@@ -2064,7 +2064,9 @@ TEXT FONT
 # ══════════════════════════════════════════════════════════════════════════════
 
 def _run_qt(sheet: Optional[Sheet], initial_dir: Path, initial_path: Optional[Path] = None,
-            initial_key: Optional[str] = None) -> None:
+            initial_key: Optional[str] = None, handoff: Optional[str] = None) -> None:
+    """The viewer's window; handoff: its channel id, listening for the KIUT
+    window's Open in Viewer (the program, not the tests)."""
     from PySide6.QtWidgets import (
         QApplication, QMainWindow, QWidget, QSplitter,
         QVBoxLayout, QHBoxLayout, QScrollArea, QCheckBox, QPushButton,
@@ -2079,6 +2081,34 @@ def _run_qt(sheet: Optional[Sheet], initial_dir: Path, initial_path: Optional[Pa
         QPdfWriter, QPicture, QCursor, QFontDatabase,
     )
     from PySide6.QtCore import Qt, QPointF, QRectF, QTimer, QSize, QMarginsF, QPoint, QRect, QEvent, QObject
+    from PySide6.QtCore import Signal as _Signal
+
+    class _HandoffBridge(QObject):
+        """A file offered by the KIUT window's Open in Viewer (kiut/core/handoff.py),
+        handed from the listening thread to the window's own thread; the reply
+        handed back."""
+        offered = _Signal(object)
+
+        def __init__(self, receive):
+            super().__init__()
+            self._receive = receive
+            self.offered.connect(self._on_offered)     # queued: runs in the window's thread
+
+        def _on_offered(self, box):
+            path, reply, done = box
+            try:
+                reply.append(self._receive(path))
+            except Exception as e:
+                reply.append(f'error: {e}')
+            done.set()
+
+        def handle(self, paths, sender=None):
+            import threading
+            path = paths[0] if paths else None
+            reply, done = [], threading.Event()
+            self.offered.emit((path, reply, done))
+            done.wait(10)
+            return reply[0] if reply else 'error: no answer'
 
     BG   = QColor(_BG_HEX)
     WIRE = QColor(_COL_WIRE)
@@ -4286,6 +4316,9 @@ def _run_qt(sheet: Optional[Sheet], initial_dir: Path, initial_path: Optional[Pa
             self._current_path  = None        # Path of the currently displayed file
             self._current_key   = None        # its sheet's key in a .UTSCH, else None
             self._root_path     = None        # Path the Sheets tree is rooted at
+            self._handoff       = None        # its own channel (kiut/core/handoff.py)
+            self.viewer_id      = None        # its id: KIUT's Open in Viewer finds it by it
+            self.handoff_name   = None
             # stack of previously-shown (path, key) sheets, for the 'B' back
             # shortcut (see _go_back / _load_and_show)
             self._sheet_history: List[tuple] = []
@@ -4780,7 +4813,49 @@ def _run_qt(sheet: Optional[Sheet], initial_dir: Path, initial_path: Optional[Pa
             save_recent_files([])
             self._rebuild_recent_menu()
 
+        def start_handoff(self, viewer_id: str, name: Optional[str] = None) -> bool:
+            """Listening on its own channel, for the KIUT window's Open in Viewer
+            once it is KIUT's own viewer (KIUT started it, or it sent KIUT a
+            design)."""
+            from kiut.core import handoff
+            self.viewer_id, self.handoff_name = viewer_id, name
+            self._handoff_bridge = _HandoffBridge(self.receive)
+            listener = handoff.Listener(handoff.viewer_channel(viewer_id), self._handoff_bridge.handle,
+                                        name=name)
+            if listener.start():
+                self._handoff = listener
+                return True
+            return False
+
+        def stop_handoff(self):
+            if self._handoff is not None:
+                self._handoff.stop()
+                self._handoff = None
+
+        def receive(self, path: Optional[Path]) -> str:
+            """A file the KIUT window offers: only brought to the front when it is
+            the design shown (its zoom, sheet and selection kept), else opened as
+            File > Open does."""
+            from kiut.core import handoff
+            if path is None:
+                self.to_front()
+                return handoff.SHOWN
+            path = Path(path)
+            shown = handoff.same_file(path, self._root_path) or handoff.same_file(path, self._current_path)
+            if not shown:
+                self._root_path = path
+                self._load_and_show(path, fresh=True)
+            self.to_front()
+            return handoff.SHOWN if shown else handoff.OPENED
+
+        def to_front(self):
+            if self.isMinimized():
+                self.showNormal()
+            self.raise_()
+            self.activateWindow()
+
         def closeEvent(self, e):
+            self.stop_handoff()
             # Persist layer visibility and recent files on close
             save_layer_visibility(
                 {k: cb.isChecked() for k, cb in self._checks.items()})
@@ -5904,8 +5979,9 @@ def _run_qt(sheet: Optional[Sheet], initial_dir: Path, initial_path: Optional[Pa
                     f"another program, or the destination is not writable.")
 
         def _open_in_kiut(self):
-            """Launch kiut_gui.py (the KIUT window) as a separate process,
-            pre-loaded with this design's ROOT sheet -- not necessarily
+            """The design in the KIUT window -- the open one (kiut/core/handoff.py),
+            else kiut_gui.py started -- which then has this viewer as its own:
+            this design's ROOT sheet -- not necessarily
             self._current_path, which may be a sub-sheet the user has
             navigated into (double-click, Sheets panel, Find): the window
             finds the sub-sheets from the root, as File > Open here always
@@ -5919,9 +5995,21 @@ def _run_qt(sheet: Optional[Sheet], initial_dir: Path, initial_path: Optional[Pa
                     f'Could not find {gui_script.name} in {APP_DIR}.\n'
                     'Keep the KIUT folder as it is.')
                 return
-            target = self._root_path or self._current_path
+            from kiut.core import handoff
+            # the design's original, not its copy in <name>_corrected (the window hands the
+            # viewer the working copy): the window then knows its own design
+            target = handoff.corrected_original(self._root_path or self._current_path)
+            # the KIUT window, when open: it opens the design, and this viewer becomes its own
+            reply = handoff.offer(handoff.WINDOW, [target], sender=self.viewer_id, name=self.handoff_name)
+            if reply == handoff.BUSY:
+                QMessageBox.information(self, 'KIUT', handoff.BUSY_TEXT); return
+            if reply in (handoff.OPENED, handoff.SHOWN):
+                return
+            if reply:
+                QMessageBox.warning(self, 'KIUT', f'The open KIUT window could not take it:\n{reply}'); return
             try:
-                subprocess.Popen([sys.executable, str(gui_script), str(target)])
+                own = ['--viewer', self.viewer_id] if self.viewer_id else []
+                subprocess.Popen([sys.executable, str(gui_script), *own, str(target)])
             except OSError as exc:
                 QMessageBox.critical(self, 'KIUT', f'Failed to launch the KIUT window:\n{exc}')
 
@@ -6338,6 +6426,8 @@ def _run_qt(sheet: Optional[Sheet], initial_dir: Path, initial_path: Optional[Pa
     app = QApplication.instance() or QApplication(sys.argv)
     app.setStyle('Fusion')
     win = MainWindow(sheet, initial_dir, initial_path, initial_key)
+    if handoff:
+        win.start_handoff(handoff)
     win.show()
     win._update_read_messages()
     families = {f.lower() for f in QFontDatabase.families()}
@@ -6354,6 +6444,7 @@ def main():
     ap = argparse.ArgumentParser(description='Ulticap .SCH / .UTSCH viewer')
     ap.add_argument('input', nargs='?',
                     help='.SCH, .BLK or .UTSCH file (optional — use File ▸ Open if omitted)')
+    ap.add_argument('--channel', help=argparse.SUPPRESS)    # given by the KIUT window: its own viewer
     args = ap.parse_args()
 
     sheet = None
@@ -6373,7 +6464,9 @@ def main():
         initial_dir = initial_path.parent
 
     try:
-        _run_qt(sheet, initial_dir, initial_path, initial_key)
+        from kiut.core import handoff
+        _run_qt(sheet, initial_dir, initial_path, initial_key,
+                handoff=args.channel or handoff.new_viewer_id())
     except ImportError:
         print('─' * 60)
         print('PySide6 is required but not installed.')

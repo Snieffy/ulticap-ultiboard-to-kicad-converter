@@ -203,7 +203,9 @@ Then open `design_KiCad/design.kicad_pro` in KiCad — or press *Open in KiCad* 
 python kiut_gui.py [<file(s)>]
 ```
 
-One window for everything KIUT converts. From top to bottom:
+One window for everything KIUT converts — and one at a time: started while it is open (by hand, a
+file association, the viewer's *Open in KIUT…*), KIUT hands the files to the open window, which
+comes to the front (while it converts, it says it is busy). From top to bottom:
 
 ![The KIUT window](docs/assets/kiut_main.png)
 
@@ -275,7 +277,9 @@ text height and width ratios (remembered per font), *Library only* (`ask`, `yes`
 merge staircases* (greyed out unless the board is a V2/V3 DDF). A section, or a switch, that doesn't
 apply to the input is greyed out. The
 Schematic section also has:
-- **Open in Viewer** — the schematic in the KIUT Viewer;
+- **Open in Viewer** — the schematic in KIUT's own viewer: the viewer that last sent the design to
+  KIUT (*Open in KIUT…*), else the one KIUT started last (only brought to the front when it shows
+  that design); when that one has been closed, a new one, which becomes KIUT's own;
 - **Compare netlists** — after a conversion, the converted schematic's nets against Ulticap's own
   netlist of the design ([docs/SCHEMATICS.md](docs/SCHEMATICS.md#comparing-netlists)).
 
@@ -299,8 +303,9 @@ an ambiguous record in an exported `.SCH` (the record-integrity dialog,
 library's technology ([docs/BOARDS.md](docs/BOARDS.md#ultiboard-libraries)).
 
 **Menus**
-- **File:** *Open…*, *Import old settings…* (KIUC's `kiuc.ini`, KIUB's `kiub_gui.ini`: read, never
-  changed), *Save log…*, *Exit*.
+- **File:** *Open…*, *Open Recent* (the last ten selections — a set of files as one, its first
+  file shown with "+ N more"; *Empty Recent Files List* clears it), *Import old settings…* (KIUC's
+  `kiuc.ini`, KIUB's `kiub_gui.ini`: read, never changed), *Save log…*, *Exit*.
 - **Schematic:** *Rename designators without converting…* (the designator fix on its own, after a
   confirmation listing the renames), *Review auto-corrected pins…* (after a conversion that corrected
   pin labels), *Dump / Inspect* and *Dump Symbols* (what the schematic holds, in the log and in

@@ -76,6 +76,8 @@ SCHEMATIC_SWITCHES = (('fix_designators', 'Rename designators KiCad won’t acce
 SOURCE_NAMES = {'design': "the design's own", 'kiut': 'current', 'default': 'built-in defaults'}
 TECH_KEYS = ('single', 'top', 'bottom', 'inner', 'drills', 'traces')
 VIEWER = 'kiut_viewer.py'
+OPEN_RECENT, EMPTY_RECENT = 'Open Recent', 'Empty Recent Files List'   # File menu (as the viewer's)
+MAX_RECENT = 10
 RENAME_ONLY = 'Rename designators without converting…'   # the Schematic menu's (Fix designators only… until 10d)
 KICAD_PROGRAM = 'KiCad program…'                         # the File menu's (stage 10e)
 LIBRARY_FOLDER = 'Library output folder…'
@@ -258,6 +260,9 @@ class App(tk.Tk):
         self._run_lines: List[str] = []
         self._fonts: Optional[List[str]] = None
         self._mono: Dict[str, bool] = {}
+        self._handoff = None                          # the KIUT window's channel (kiut/core/handoff.py)
+        self.handoff_name: Optional[str] = None
+        self.own_viewer: Optional[str] = None         # KIUT's own viewer: its channel id
         self._read_window_settings()
         self._build()
         self._load_source(None, say=False)
@@ -276,6 +281,9 @@ class App(tk.Tk):
         self.tooltips_on = w.get('tooltips', 'yes') != 'no'
         self.last_folder = w.get('folder', '')
         self.geometry_text = w.get('geometry', '')
+        r = dict(others.items('recent')) if others.has_section('recent') else {}
+        self.recent_files: List[str] = [r[f'file{i}'] for i in range(MAX_RECENT)
+                                        if r.get(f'file{i}', '').strip()]
         self.ratios: Dict[str, tuple] = dict(SEED_RATIOS)
         if others.has_section('font_ratios'):
             self.ratios = {}
@@ -302,6 +310,7 @@ class App(tk.Tk):
             'font_ratios': {name: f'{h:g}|{w:g}' for name, (h, w) in self.ratios.items()},
             'technology': dict(self.technology),
             'folders': {'libraries': self.library_folder_text} if self.library_folder_text else {},
+            'recent': {f'file{i}': text for i, text in enumerate(self.recent_files[:MAX_RECENT])},
         }
 
     def save_last_used(self) -> None:
@@ -330,6 +339,8 @@ class App(tk.Tk):
         menu = tk.Menu(self)
         file_menu = tk.Menu(menu, tearoff=0)
         file_menu.add_command(label='Open…', command=self.browse)
+        self.recent_menu = tk.Menu(file_menu, tearoff=False, postcommand=self._fill_recent_menu)
+        file_menu.add_cascade(label=OPEN_RECENT, menu=self.recent_menu)
         file_menu.add_command(label='Import old settings…', command=self.import_settings)
         file_menu.add_command(label='Save log…', command=self.save_log)
         file_menu.add_separator()
@@ -812,12 +823,114 @@ class App(tk.Tk):
                                      f'to convert both together.'))
         said += [(('warn' if level == 'warn' else 'note'), text) for level, text in
                  cli.selection_messages(inputs, self.values['board']['library_only'])]
+        self._add_recent(names)
         design_file, name = cli._design_file(self.run_inputs() or inputs)
         changed = design_file != self.design_file
         self._set_design(design_file, name)
         self._say(said)
         if changed:
             self._list_sheets(inputs)
+
+    # ── File > Open Recent ──
+    def _add_recent(self, names: List[str]) -> None:
+        """A selection the window took, first in the recent list (once; at most
+        MAX_RECENT), kept in kiut.ini."""
+        text = '; '.join(str(n) for n in names)
+        key = os.path.normcase(text)
+        updated = [text] + [t for t in self.recent_files if os.path.normcase(t) != key]
+        updated = updated[:MAX_RECENT]
+        if updated != self.recent_files:
+            self.recent_files = updated
+            try:
+                self.save_window()
+            except OSError:
+                pass
+
+    @staticmethod
+    def recent_label(text: str) -> str:
+        """A recent selection as the menu shows it: its first file, '+ N more'
+        for a set."""
+        names = [n.strip() for n in text.split(';') if n.strip()]
+        return names[0] + (f'  + {len(names) - 1} more' if len(names) > 1 else '')
+
+    def _fill_recent_menu(self) -> None:
+        m = self.recent_menu
+        m.delete(0, 'end')
+        for text in self.recent_files:
+            there = all(Path(n.strip()).exists() for n in text.split(';') if n.strip())
+            m.add_command(label=self.recent_label(text), state='normal' if there else 'disabled',
+                          command=lambda t=text: self.open_recent(t))
+        if self.recent_files:
+            m.add_separator()
+        m.add_command(label=EMPTY_RECENT, command=self.empty_recent,
+                      state='normal' if self.recent_files else 'disabled')
+
+    def open_recent(self, text: str) -> None:
+        names = [n.strip() for n in text.split(';') if n.strip()]
+        if self.running:
+            return
+        self.last_folder = str(Path(names[0]).parent)
+        self.open_files(names)
+        self._add_recent(names)                     # first again, also when it was open already
+
+    def empty_recent(self) -> None:
+        self.recent_files = []
+        try:
+            self.save_window()
+        except OSError:
+            pass
+
+    # ── one KIUT window; the viewer's Open in KIUT… (kiut/core/handoff.py) ──
+    def start_handoff(self, name: Optional[str] = None) -> bool:
+        """Listening as the KIUT window: files given to a second start, and the
+        viewers' Open in KIUT…. False when another window listens already (one
+        started at the same moment)."""
+        from kiut.core import handoff
+        self.handoff_name = name
+        listener = handoff.Listener(handoff.WINDOW,
+                                    lambda paths, sender: self.on_main(lambda: self.receive(paths, sender)),
+                                    name=name)
+        if listener.start():
+            self._handoff = listener
+            return True
+        return False
+
+    def stop_handoff(self) -> None:
+        if self._handoff is not None:
+            self._handoff.stop()
+            self._handoff = None
+
+    def receive(self, paths: List[Path], sender: Optional[str] = None) -> str:
+        """Files handed to the window -- by a second start of KIUT or a viewer's
+        Open in KIUT… (`sender`, that viewer's id, then KIUT's own viewer):
+        opened (a corrected copy as its original), or, when they are the ones
+        shown or there are none, only brought to the front; refused while the
+        window is busy."""
+        from kiut.core import handoff
+        originals = [handoff.corrected_original(p) for p in paths]
+        if self.running and originals:
+            self.write_log(f'NOTE: {originals[0].name} handed to KIUT refused: KIUT is busy.')
+            return handoff.BUSY
+        if sender:
+            self.own_viewer = sender
+        shown = not originals or (self.inputs is not None and (
+            handoff.same_files(originals, self.inputs.files)
+            or handoff.same_files(originals, self.inputs.files + ([self.board_ddf] if self.board_ddf else []))))
+        if not shown:
+            self.last_folder = str(originals[0].parent)
+            self.open_files([str(o) for o in originals])
+        self.to_front()
+        return handoff.SHOWN if shown else handoff.OPENED
+
+    def to_front(self) -> None:
+        try:
+            self.deiconify()
+            self.lift()
+            self.attributes('-topmost', True)
+            self.after(300, lambda: self.attributes('-topmost', False))
+            self.focus_force()
+        except tk.TclError:
+            pass
 
     def _say(self, messages) -> None:
         """The message block's messages, also in the log."""
@@ -1325,15 +1438,25 @@ class App(tk.Tk):
         except Exception:                       # no readable corrected folder: the original
             shown = original
         shown = Path(shown) if shown and Path(shown).is_file() else original
+        from kiut.core import handoff
+        if self.own_viewer:                         # KIUT's own viewer, still open: it shows it
+            reply = handoff.offer(handoff.viewer_channel(self.own_viewer), [shown], name=self.handoff_name)
+            if reply in (handoff.OPENED, handoff.SHOWN):
+                self.write_log(f'Viewer: {shown}' if shown != original else f'Viewer: {original.name}')
+                return
+            self.own_viewer = None                  # closed: a new one becomes KIUT's own
+        viewer_id = handoff.new_viewer_id()
         try:
             # its own process, its output not in the window's console (the viewer shows what it has
-            # to say itself; stage 10d)
+            # to say itself; stage 10d); told its channel, so it is KIUT's own viewer
             no_window = getattr(subprocess, 'CREATE_NO_WINDOW', 0)
-            subprocess.Popen([sys.executable, str(APP_DIR / VIEWER), str(shown)], stdin=subprocess.DEVNULL,
-                             stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, creationflags=no_window)
+            subprocess.Popen([sys.executable, str(APP_DIR / VIEWER), '--channel', viewer_id, str(shown)],
+                             stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                             creationflags=no_window)
         except OSError as e:
             messagebox.showerror('Open in Viewer', f'The viewer could not be started:\n{e}', parent=self)
             return
+        self.own_viewer = viewer_id
         self.write_log(f'Viewer: {shown}' if shown != original else f'Viewer: {original.name}')
         if (self.values['schematic']['v5_header'] and self.inputs.kind == 'schematic'
                 and shown == original):
@@ -1687,6 +1810,7 @@ class App(tk.Tk):
                 return
             if answer:
                 kset.write(self.design_file, self.values)
+        self.stop_handoff()
         self.geometry_text = self.geometry()
         try:
             self.save_window()
@@ -1964,12 +2088,33 @@ def dump_schematic(files: List[Path], utsch: bool, symbols: bool) -> int:
 
 
 def main(argv: Optional[List[str]] = None) -> None:
-    """The window; files given: opened in it."""
-    argv = sys.argv[1:] if argv is None else argv
+    """The window; files given: opened in it. One KIUT window: when one is open
+    already, the files are handed to it (it comes to the front) and this start
+    ends."""
+    argv = list(sys.argv[1:] if argv is None else argv)
+    viewer = None
+    if len(argv) >= 2 and argv[0] == '--viewer':    # started by a viewer's Open in KIUT…: its own viewer
+        viewer, argv = argv[1], argv[2:]
+    from kiut.core import handoff
+    reply = handoff.offer(handoff.WINDOW, [Path(a).resolve() for a in argv], sender=viewer)
+    if reply in (handoff.OPENED, handoff.SHOWN):
+        return
+    if reply is not None:                           # busy, or it couldn't take them
+        root = tk.Tk()
+        root.withdraw()
+        messagebox.showinfo(TITLE, handoff.BUSY_TEXT if reply == handoff.BUSY
+                            else f'The open KIUT window could not take the files:\n{reply}', parent=root)
+        root.destroy()
+        return
     app = App()
+    app.own_viewer = viewer
+    app.start_handoff()
     if argv:
         app.open_files(argv)
-    app.mainloop()
+    try:
+        app.mainloop()
+    finally:
+        app.stop_handoff()
 
 
 if __name__ == '__main__':

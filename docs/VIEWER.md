@@ -31,9 +31,17 @@ python kiut_viewer.py design.UTSCH
 
 - From the KIUT window: **Open in Viewer** (Schematic section) opens the design's schematic — its
   corrected copy when there is one, as a conversion reads it (see
-  [CORRECTED_FOLDER.md](CORRECTED_FOLDER.md)).
+  [CORRECTED_FOLDER.md](CORRECTED_FOLDER.md)) — in KIUT's own viewer: the viewer that last sent
+  KIUT a design, else the one KIUT started last. A viewer showing that design only comes to the
+  front, its zoom and sheet kept; when it has been closed, KIUT starts a new one, which becomes its
+  own. Other viewers are left alone.
 - **File → Open Recent** lists the last ten designs opened; *Empty Recent Files List* clears it.
-- **Open in KIUT…** (toolbar) starts the KIUT window with the design open in it, to convert it.
+- **Open in KIUT…** (toolbar) opens the design in the KIUT window, to convert it — the open one when
+  there is one (only brought to the front when it shows that design; while it converts it says it
+  is busy), else a new one — and makes this viewer KIUT's own. A corrected copy is handed over as
+  its original design.
+- There can be several viewers, but one KIUT window. On Windows a window can't always bring itself
+  to the front: its taskbar button flashes instead.
 - The viewer needs PySide6 (`pip install PySide6`); without it, it says so and stops.
 
 The viewer shows exactly what the file it opens stores, and never writes a file. The KIUT window
