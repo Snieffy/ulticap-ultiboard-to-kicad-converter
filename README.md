@@ -48,6 +48,7 @@ which were published on their own until version 1.0.
 | [Viewer](docs/VIEWER.md) | the KIUT Viewer: Ulticap schematics as Ulticap draws them, and their SVG, PNG and PDF export |
 | [Settings](docs/SETTINGS.md) | every setting, its default and what it does |
 | [The corrected folder](docs/CORRECTED_FOLDER.md) | a design's folders, the corrected copies of its files, and the shared KiCad project |
+| [Coming from KIUC or KIUB](docs/COMING_FROM_KIUC_KIUB.md) | for users of KIUC and KIUB: what works differently in KIUT — the programs, the command line, settings, where libraries go, the results |
 
 ### File formats
 
